@@ -28,7 +28,9 @@ jobs:
 
     - name: Run JMeter Test Plan
       run: |
-        jmeter/bin/jmeter -n -t test-plan.jmx -l results.jtl -e -o report
+        mkdir -p report
+        jmeter/bin/jmeter -n -t test-plan.jmx -l results.jtl -e -o report || exit 1
+        test -d report || (echo "Report directory not found!" && exit 1)
 
     - name: Upload HTML Report
       uses: actions/upload-artifact@v3
