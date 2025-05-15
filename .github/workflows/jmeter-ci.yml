@@ -28,7 +28,7 @@ jobs:
 
     - name: Run JMeter Test Plan
       run: |
-        jmeter/bin/jmeter -n -t test-plan.jmx -l results.jtl -e -o report
+        jmeter/bin/jmeter -n -t "Test Plan.jmx" -l results.jtl -e -o report
 
     - name: Upload HTML Report as Artifact
       uses: actions/upload-artifact@v4
