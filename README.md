@@ -31,7 +31,7 @@ This project performs **load testing** on the user registration feature of the [
 
 1. **Clone the repo:**
 
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/Mdeliaskhan04/jmeter-load-testing.git
 cd your-repo
 
 Run tests locally (optional):
@@ -43,6 +43,7 @@ View reports:
 After workflow runs, download reports from the Actions > Artifacts tab on GitHub.
 
 #Contact
+
 Feel free to open an issue or contact me for questions or improvements.
 
 If you want, I can customize the GitHub repo URL and other details for you — just sh
