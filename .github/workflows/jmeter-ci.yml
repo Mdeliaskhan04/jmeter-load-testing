@@ -1,0 +1,37 @@
+name: Run JMeter Load Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  jmeter:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+
+    - name: Download JMeter
+      run: |
+        curl -L https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz -o jmeter.tgz
+        tar -xvzf jmeter.tgz
+        mv apache-jmeter-5.6.3 jmeter
+
+    - name: Run JMeter Test Plan
+      run: |
+        jmeter/bin/jmeter -n -t test-plan.jmx -l results.jtl -e -o report
+
+    - name: Upload HTML Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: jmeter-report
+        path: report/
